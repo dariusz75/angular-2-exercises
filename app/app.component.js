@@ -1,4 +1,4 @@
-System.register(['angular2/core', './article', './article.component'], function(exports_1, context_1) {
+System.register(['angular2/core', './article.component', './article.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,40 +10,42 @@ System.register(['angular2/core', './article', './article.component'], function(
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, article_1, article_component_1;
-    var AppComponent, ARTICLES;
+    var core_1, article_component_1, article_service_1;
+    var AppComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             },
-            function (article_1_1) {
-                article_1 = article_1_1;
-            },
             function (article_component_1_1) {
                 article_component_1 = article_component_1_1;
+            },
+            function (article_service_1_1) {
+                article_service_1 = article_service_1_1;
             }],
         execute: function() {
             AppComponent = (function () {
-                function AppComponent() {
-                    this.articles = ARTICLES;
+                function AppComponent(_articleService) {
+                    this._articleService = _articleService;
                 }
+                AppComponent.prototype.getArticles = function () {
+                    this.articles = this._articleService.getArticles();
+                };
+                AppComponent.prototype.ngOnInit = function () {
+                    this.getArticles();
+                };
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-articles',
                         directives: [article_component_1.ArticleComponent],
+                        providers: [article_service_1.ArticleService],
                         templateUrl: "app/app.component.html"
                     }), 
-                    __metadata('design:paramtypes', [])
+                    __metadata('design:paramtypes', [article_service_1.ArticleService])
                 ], AppComponent);
                 return AppComponent;
             }());
             exports_1("AppComponent", AppComponent);
-            ARTICLES = [
-                new article_1.Article('Bootstrap', 'http://getbootstrap.com/', 'Bootstrap is the most popular HTML, CSS, and JS framework for developing responsive, mobile first projects on the web.', 'http://getbootstrap.com/apple-touch-icon.png', 0),
-                new article_1.Article('Angular2', 'https://angular.io/', 'The latest Angular release is 2.4. Learn about the latest updates to the documentation. View the Angular change log for enhancements, fixes, and breaking changes in Angular itself.', 'https://angular.io/resources/images/logos/angular2/angular.svg', 0),
-                new article_1.Article('ReactJS', 'https://facebook.github.io/react/', 'React makes it painless to create interactive UIs. Design simple views for each state in your application, and React will efficiently update and render just the right components when your data changes.', 'https://cdn.auth0.com/blog/react-js/react.png', 0),
-            ];
         }
     }
 });
