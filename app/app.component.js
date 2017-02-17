@@ -26,7 +26,7 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-articles',
-                        template: "<div>This is first component!</div>\n\t\t\t\t<p>Today is {{ days[0] }} and the current month is {{ month }}.</p>"
+                        template: "\n\t\t\t\t\t\t<ul>\n\t\t\t\t\t\t\t<li *ngFor = \"#day of days\">{{ day }}</li>\n\t\t\t\t\t\t</ul>\n\t\t\t\t\t\t"
                     }), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);

@@ -4,8 +4,11 @@ import {NgFor} from 'angular2/common';
 
 @Component({
 	selector: 'my-articles',
-	template: `<div>This is first component!</div>
-				<p>Today is {{ days[0] }} and the current month is {{ month }}.</p>`
+	template: `
+						<ul>
+							<li *ngFor = "#day of days">{{ day }}</li>
+						</ul>
+						`
 })
 
 export class AppComponent {
